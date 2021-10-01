@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>README.html</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"  /><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><style> body { box-sizing: border-box; max-width: 740px; width: 100%; margin: 40px auto; padding: 0 10px; } </style><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script><script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script><script>document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('markdown-body'); document.querySelectorAll('pre[lang] > code').forEach((code) => { code.classList.add(code.parentElement.lang); }); document.querySelectorAll('pre > code').forEach((code) => { hljs.highlightBlock(code); }); });</script>
+</head>
+
+<body>
+
+<h1 id="chaincomplexes">ChainComplexes</h1>
+<h2 id="overview">Overview</h2>
+<p>A package for working with <a href="https://en.wikipedia.org/wiki/Chain_complex">chain complexes</a> over the finite field with two elements and their morphisms.</p>
+<p>The homology groups of chain complexes can be calculated and whether a morphism of chain complexes is a <a href="https://en.wikipedia.org/wiki/Quasi-isomorphism">quasi-isomorphism</a>.</p>
+<p>The type <code>ChainComplex{T}</code> contains a single field <code>differentials</code>, a vector of matrices of type <code>T</code>. The ith element of the <code>differentials</code> field represents the ith differential in the chain complex.</p>
+<p>The type <code>AlignedChainComplex{T}</code> can be constructed from a <code>ChainComplex{T}</code> type. It finds a filtered basis for each underlying vector space of the chain complex such that the differentials of this chain complex can be written in block form:</p>
+<p><img src="./images/blockform.svg" /></p>
+<p>and thus the ith <a href="https://ncatlab.org/nlab/show/Betti+number">Betti number</a> can be found by the number of zero columns of the ith differential minus the number of non-zero rows of the (i-1)th differential.</p>
+
+</body>
+</html>
