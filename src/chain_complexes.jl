@@ -15,7 +15,6 @@ Base.eltype(acc::AlignedChainComplex) = (eltype ∘ first ∘ last ∘ first)(ac
 Base.length(cc::ChainComplex)::Integer = length(cc.differentials) + 1
 Base.length(acc::AlignedChainComplex)::Integer = length(acc.filteredbases) + 1
 
-
 function _bettinumbers(filteredbases, topdim)
     bettinumbers = [size(filteredbases[i][2])[2] for i in 0:topdim]
     while ~(isempty(bettinumbers) || nonzero(last(bettinumbers)))
@@ -52,13 +51,15 @@ function AlignedChainComplex{T}(cc::ChainComplex{T}) where T
     return AlignedChainComplex(filteredbases, inversebases, bettinumbers)
 end
 
-struct ChainComplexMorphism{T} <: Morphism{ChainComplex{T}}
+abstract type AbstractChainComplexMorphism{T} end
+
+struct ChainComplexMorphism{T} <: AbstractChainComplexMorphism{T}
     source::ChainComplex{T}
     target::ChainComplex{T}
     verticals::Vector{Matrix{T}}
 end
 
-struct AlignedChainComplexMorphism{T} <: Morphism{AlignedChainComplex{T}}
+struct AlignedChainComplexMorphism{T} <: AbstractChainComplexMorphism{T}
     source::AlignedChainComplex{T}
     target::AlignedChainComplex{T}
     verticals::Vector{Matrix{T}}
